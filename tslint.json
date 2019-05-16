@@ -119,7 +119,7 @@
     "component-selector": [
       true,
       "element",
-      "app",
+      "rad",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
