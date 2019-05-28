@@ -1,0 +1,10 @@
+<div class="ring-component">
+    <img [src]="ring.icon" class="ring-icon" [alt]="ring.name + ' icon'">
+    <span class="ring-name">{{ring.name}}</span>
+
+    <ul class="ring-items">
+        <li *ngFor="let item of ring.items">
+            <rad-ring-item [ringItem]="item"></rad-ring-item>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,9 @@
+@import 'mixins';
+
+.ring-items {
+    @include on-circle($item-count: 8, $circle-size: 20em, $item-size: 6em); 
+}
+
+li {
+    transition: all 2s linear;
+}
