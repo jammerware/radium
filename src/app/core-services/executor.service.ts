@@ -14,8 +14,9 @@ export class ExecutorService {
             return;
         }
         else if (ringItem.type === RingItemType.Execute) {
-            this.electronService.childProcess.exec(ringItem.args[0]);
-            console.log('done did');
+            this.electronService.childProcess.exec(`"${ringItem.args[0]}"`, error => {
+                console.log('error', error);
+            });
         }
     }
 }
