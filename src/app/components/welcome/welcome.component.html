@@ -1,6 +1,5 @@
 <div class="container">
     <h1 class="title">
-        <!-- {{ 'PAGES.HOME.TITLE' | translate }} -->
-        <rad-ring *ngFor="let ring of rings" [ring]="ring"></rad-ring>
+        <rad-ring [ring]="activeRing"></rad-ring>
     </h1>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RingItem } from '@/rings/models/ring-item';
-import { ExecutorService } from '@/core-services/executor.service';
+import { RingsService } from '@/rings/services/rings.service';
+import { RingItemType } from '@/rings/models/ring-item-type';
 
 @Component({
     selector: 'rad-ring-item',
@@ -9,14 +10,19 @@ import { ExecutorService } from '@/core-services/executor.service';
 })
 export class RingItemComponent implements OnInit {
     @Input() ringItem: RingItem;
+    iconSrc: string;
 
-    constructor(private executor: ExecutorService) { }
+    constructor(private ringsService: RingsService) { }
 
-    ngOnInit() {
+    async ngOnInit() {
+        this.iconSrc = this.ringItem.icon;
+        if (this.ringItem.type === RingItemType.RingLink && !this.iconSrc) {
+            const ring = await this.ringsService.get(this.ringItem.args[0]).toPromise();
+            this.iconSrc = ring.icon;
+        }
     }
 
     onClick() {
-        console.log('the things');
-        this.executor.execute(this.ringItem);
+        this.ringsService.execute(this.ringItem);
     }
 }

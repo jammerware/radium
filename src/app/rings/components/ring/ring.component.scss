@@ -1,9 +1,15 @@
 @import 'mixins';
 
+.ring-icon {
+    height: 10vw;
+    object-fit: cover;
+    width: 10vw;
+}
+
 .ring-items {
     @include on-circle($item-count: 8, $circle-size: 20em, $item-size: 6em); 
 }
 
 li {
-    transition: all 2s linear;
+    transition: all 1.1s ease-in-out;
 }

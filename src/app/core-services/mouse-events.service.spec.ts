@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ExecutorService } from './executor.service';
+import { MouseEventsService } from './mouse-events.service';
 
-describe('ExecutorService', () => {
+describe('MouseEventsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ExecutorService = TestBed.get(ExecutorService);
+    const service: MouseEventsService = TestBed.get(MouseEventsService);
     expect(service).toBeTruthy();
   });
 });

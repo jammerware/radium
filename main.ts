@@ -14,6 +14,7 @@ function createWindow() {
     win = new BrowserWindow({
         x: 0,
         y: 0,
+        frame: false,
         width: size.width,
         height: size.height,
         webPreferences: {
@@ -49,18 +50,18 @@ function createWindow() {
 }
 
 function onHotkey() {
-    console.log('hotkey fired');
     if (win) {
-        console.log('restore');
         win.restore();
+        win.focus();
     }
     else {
-        console.log('create');
         createWindow();
     }
 }
 
 try {
+    // enable notifications on windows during dev
+    app.setAppUserModelId(process.execPath)
 
     // This method will be called when Electron has finished
     // initialization and is ready to create browser windows.
