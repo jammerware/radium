@@ -4,7 +4,7 @@ import { first, find, filter, mergeAll } from 'rxjs/operators';
 import { Ring } from '../models/ring';
 import { RingItem } from '@/rings/models/ring-item';
 import { RingItemType } from '../models/ring-item-type';
-import { ElectronService } from '@/providers/electron.service';
+import { ElectronService } from '@/core-services/electron.service';
 import { NotificationsService } from '@/core-services/notifications.service';
 
 @Injectable({ providedIn: 'root' })

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { WelcomeComponent } from './welcome.component';
+import { WelcomeComponent } from './home.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 describe('WelcomeComponent', () => {
@@ -9,16 +9,8 @@ describe('WelcomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
-<<<<<<< HEAD:src/app/welcome/welcome.component.spec.ts
-      imports: [
-        TranslateModule.forRoot()
-      ]
-    })
-      .compileComponents();
-=======
       imports: [TranslateModule.forRoot()]
     }).compileComponents();
->>>>>>> f986a0acbe237fb720134813ca4e4942bcfcb17c:src/app/home/home.component.spec.ts
   }));
 
   beforeEach(() => {

@@ -4,11 +4,11 @@ import { RingsService } from '@/rings/services/rings.service';
 import { MouseEventsService, MouseButtonEvent } from '@/core-services/mouse-events.service';
 
 @Component({
-    selector: 'rad-welcome',
-    templateUrl: './welcome.component.html',
-    styleUrls: ['./welcome.component.scss']
+    selector: 'rad-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
 })
-export class WelcomeComponent implements OnInit {
+export class HomeComponent implements OnInit {
     activeRing: Ring;
     rings: Ring[];
     private backStack: Ring[] = [];
