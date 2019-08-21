@@ -6,8 +6,10 @@
     width: 10vw;
 }
 
-.ring-items {
-    @include on-circle($item-count: 8, $circle-size: 20em, $item-size: 6em); 
+@for $i from 1 through 8 {
+    .ring-items-#{$i} {
+        @include on-circle($item-count: $i, $circle-size: 20em, $item-size: 6em);
+    }
 }
 
 li {
