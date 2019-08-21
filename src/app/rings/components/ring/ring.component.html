@@ -1,6 +1,8 @@
 <div class="ring-component">
-    <img [src]="ring.icon" class="ring-icon" [alt]="ring.name + ' icon'">
-    <span class="ring-name">{{ring.name}}</span>
+    <div class="identity-container">
+        <img [src]="ring.icon" class="ring-icon" [alt]="ring.name + ' icon'">
+        <h1 class="ring-name">{{ring.name}}</h1>
+    </div>
 
     <ul class="ring-items">
         <li *ngFor="let item of ring.items">

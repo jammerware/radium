@@ -1,5 +1,24 @@
 @import 'mixins';
 
+.ring-component {
+    position: relative;
+
+    h1 {
+        text-align: center;
+    }
+
+    .identity-container {
+        position: absolute;
+        top: calc(50% - 86px);
+        left: calc(50% - 66px);
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
 .ring-icon {
     height: 10vw;
     object-fit: cover;
@@ -7,7 +26,7 @@
 }
 
 .ring-items {
-    @include on-circle($item-count: 8, $circle-size: 20em, $item-size: 6em); 
+    @include on-circle($item-count: 2, $circle-size: 50vw, $item-size: 6em); 
 }
 
 li {
