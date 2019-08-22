@@ -4,7 +4,7 @@
         <h1 class="ring-name">{{ring.name}}</h1>
     </div>
 
-    <ul class="ring-items">
+    <ul class="ring-items" [ngClass]="'items-' + ring.items.length">
         <li *ngFor="let item of ring.items">
             <rad-ring-item [ringItem]="item"></rad-ring-item>
         </li>
