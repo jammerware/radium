@@ -2,6 +2,7 @@
 
 .ring-component {
     position: relative;
+    width: 100%;
 
     h1 {
         text-align: center;
@@ -26,13 +27,10 @@
 }
 
 .ring-items {
-    li {
-        transition: all 1.1s ease-in-out;
-    }
-
+    left: calc(50% - 15em);
     @for $i from 1 through 8 {
         &.items-#{$i} {
-            @include on-circle($item-count: $i, $circle-size: 20em, $item-size: 6em);
+            @include on-circle($item-count: $i, $circle-size: 30em, $item-size: 6em);
         }
     }
 }

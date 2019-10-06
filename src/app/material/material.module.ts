@@ -4,12 +4,14 @@ import {
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
 } from '@angular/material';
 
 const MATERIAL_MODULES = [
     MatButtonModule,
     MatDialogModule,
+    MatDividerModule,
     MatFormFieldModule,
     MatSelectModule,
 ];

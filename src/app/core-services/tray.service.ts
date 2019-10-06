@@ -28,7 +28,6 @@ export class TrayService {
     }
 
     private buildTray() {
-        console.log('building a tray');
         const electronRemote = this.electron.getRemote();
         const contextMenu = electronRemote.Menu.buildFromTemplate([
             {
@@ -52,8 +51,7 @@ export class TrayService {
         const tray = new electronRemote.Tray('./src/assets/taskbar.png');
         tray.setToolTip('Radium');
         tray.setContextMenu(contextMenu);
+        tray.on
         this.electron.ipcRenderer.send('trayCreated', tray);
-
-        console.log('this is the tray i built', tray);
     }
 }

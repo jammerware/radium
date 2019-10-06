@@ -6,27 +6,37 @@ import { RingItem } from '@/rings/models/ring-item';
 import { RingItemType } from '../models/ring-item-type';
 import { ElectronService } from '@/core-services/electron.service';
 import { NotificationsService } from '@/core-services/notifications.service';
+import { LoggerService } from '@/core-services/logger.service';
 
 @Injectable({ providedIn: 'root' })
 export class RingsService {
     activeRingChange = new EventEmitter<Ring>();
+    newItem = new EventEmitter<Ring>();
 
     constructor(
         private electronService: ElectronService,
+        private loggerService: LoggerService,
         private notificationsService: NotificationsService) { }
 
     async execute(ringItem: RingItem) {
-        if (ringItem.type === RingItemType.RingLink) {
+        if (ringItem.type === RingItemType.NewItem) {
+            this.get(ringItem.args[0]).subscribe(ring => {
+                this.newItem.emit(ring);
+            });
+        }
+        else if (ringItem.type === RingItemType.RingLink) {
             this.get(ringItem.args[0]).subscribe(ring => {
                 this.activeRingChange.emit(ring)
             });
             return;
         }
         else if (ringItem.type === RingItemType.Execute) {
-            console.log('exec', ringItem.args[0]);
             this.electronService.childProcess.exec(`"${ringItem.args[0]}"`, error => {
                 if (error) {
-                    console.error('error', error);
+                    this.loggerService.error(JSON.stringify(error));
+                }
+                else {
+                    this.notificationsService.show("Radium", `Launching ${ringItem.name}...`);
                 }
             });
         }

@@ -11,7 +11,7 @@ import {
 import * as path from 'path';
 import * as url from 'url';
 
-let win: BrowserWindow;
+let appWindow: BrowserWindow;
 let tray: Tray;
 const args = process.argv.slice(1);
 const serve = args.some(val => val === '--serve');
@@ -21,7 +21,7 @@ ipcMain.on('trayCreated', (eventEmitter: EventEmitter, trayCreated: Tray) => {
 });
 
 ipcMain.on('trayExists', () => {
-    win.webContents.send('tray', tray);
+    appWindow.webContents.send('tray', tray && !tray.isDestroyed());
 });
 
 ipcMain.on('trayDestroy', () => {
@@ -35,7 +35,7 @@ function createWindow() {
     const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
     // Create the browser window.
-    win = new BrowserWindow({
+    appWindow = new BrowserWindow({
         x: 0,
         y: 0,
         frame: false,
@@ -45,15 +45,15 @@ function createWindow() {
             nodeIntegration: true,
         },
     });
-    win.maximize();
+    appWindow.maximize();
 
     if (serve) {
         require('electron-reload')(__dirname, {
             electron: require(`${__dirname}/node_modules/electron`)
         });
-        win.loadURL('http://localhost:4200');
+        appWindow.loadURL('http://localhost:4200');
     } else {
-        win.loadURL(url.format({
+        appWindow.loadURL(url.format({
             pathname: path.join(__dirname, 'dist/index.html'),
             protocol: 'file:',
             slashes: true
@@ -61,22 +61,22 @@ function createWindow() {
     }
 
     if (serve) {
-        win.webContents.openDevTools();
+        appWindow.webContents.openDevTools();
     }
 
     // Emitted when the window is closed.
-    win.on('closed', () => {
+    appWindow.on('closed', () => {
         // Dereference the window object, usually you would store window
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
-        win = null;
+        appWindow = null;
     });
 }
 
 function onHotkey() {
-    if (win) {
-        win.restore();
-        win.focus();
+    if (appWindow) {
+        appWindow.restore();
+        appWindow.focus();
     }
     else {
         createWindow();
@@ -108,11 +108,7 @@ try {
     });
 
     app.on('activate', () => {
-        // On OS X it's common to re-create a window in the app when the
-        // dock icon is clicked and there are no other windows open.
-        if (win === null) {
-            createWindow();
-        }
+        createWindow();
     });
 
     app.on('will-quit', () => {

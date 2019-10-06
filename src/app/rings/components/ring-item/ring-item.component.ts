@@ -9,6 +9,7 @@ import { RingItemType } from '@/rings/models/ring-item-type';
     styleUrls: ['./ring-item.component.scss']
 })
 export class RingItemComponent implements OnInit {
+    @Input() preview = false;
     @Input() ringItem: RingItem;
     iconSrc: string;
 
@@ -23,6 +24,8 @@ export class RingItemComponent implements OnInit {
     }
 
     onClick() {
-        this.ringsService.execute(this.ringItem);
+        if (!this.preview) {
+            this.ringsService.execute(this.ringItem);
+        }
     }
 }

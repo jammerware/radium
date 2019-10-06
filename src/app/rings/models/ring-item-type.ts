@@ -1,5 +1,6 @@
 export enum RingItemType {
-    ShellScript,
     Execute,
+    NewItem,
     RingLink,
+    ShellScript,
 }

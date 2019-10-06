@@ -3,12 +3,14 @@
     <form>
         <mat-form-field>
             <mat-label>Choose a ring to edit...</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let ring of rings$ | async" [value]="ring.id">
+            <mat-select name="selectedRing" [(ngModel)]="selectedRing">
+                <mat-option *ngFor="let ring of rings$ | async" [value]="ring">
                     {{ring.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <button type="button" mat-raised-button color="primary" (click)="newRingClick()">NEW RING</button>
     </form>
+    <mat-divider></mat-divider>
+    <rad-ring *ngIf="selectedRing" [ring]="selectedRing" [preview]="true"></rad-ring>
 </div>

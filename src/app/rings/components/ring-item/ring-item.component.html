@@ -1,4 +1,4 @@
-<div class="ring-item-component" (click)="onClick()">
+<div class="ring-item-component" [ngClass]="preview && 'preview'" (click)="onClick()">
     <img [src]="iconSrc" class="ring-item-icon" [alt]="ringItem.name + ' icon'">
     <p class="ring-item-name">{{ringItem.name}}</p>
 </div>
