@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ElectronService } from '@/core-services/electron.service';
+import { Tray } from 'electron';
 import { AppConfig } from '../environments/environment';
+import { TrayService } from './core-services/tray.service';
 
 @Component({
     selector: 'rad-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     constructor(
-        public electronService: ElectronService,
-        private translate: TranslateService) {
+        private translate: TranslateService,
+        private trayService: TrayService) {
         translate.setDefaultLang('en');
+    }
+
+    ngOnInit(): void {
+        this.trayService.build();
     }
 }

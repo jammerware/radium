@@ -23,10 +23,12 @@ export class RingsService {
             return;
         }
         else if (ringItem.type === RingItemType.Execute) {
-            this.electronService.childProcess.exec(`"${ringItem.args[0]}"`, error => {
-                console.log('error', error);
-            });
             console.log('exec', ringItem.args[0]);
+            this.electronService.childProcess.exec(`"${ringItem.args[0]}"`, error => {
+                if (error) {
+                    console.error('error', error);
+                }
+            });
         }
     }
 
@@ -40,6 +42,7 @@ export class RingsService {
     getAll(): Observable<Ring[]> {
         return of([
             {
+                id: '17615a1a-1561-47da-8f94-83334a853ebb',
                 name: "Begin",
                 icon: "https://banner2.kisspng.com/20180203/cve/kisspng-icon-welcome-png-image-5a759f9fc6afb8.2111543715176580158138.jpg",
                 items: [
@@ -56,6 +59,7 @@ export class RingsService {
                 ]
             },
             {
+                id: '2bf700f8-1e42-4221-954d-96694694e6ba',
                 name: "Code",
                 icon: "http://icons.iconarchive.com/icons/thehoth/seo/256/seo-web-code-icon.png",
                 items: [
@@ -80,6 +84,7 @@ export class RingsService {
                 ],
             },
             {
+                id: 'dbc7f941-86de-483c-be49-f7005e33bc6a',
                 name: "Gaemz",
                 icon: "https://cdn3.iconfinder.com/data/icons/hotel-services-facilities-2/256/Game_Room-512.png",
                 items: [

@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
         this.ringsService.getAll().subscribe(rings => {
             this.rings = rings;
             this.changeRing(rings.find(r => r.name === "Begin"));
-            console.log('current ring', this.activeRing);
         });
 
         this
@@ -34,10 +33,7 @@ export class HomeComponent implements OnInit {
             .mouseButtonEvent
             .subscribe(event => {
                 if (event === MouseButtonEvent.Right && this.backStack.length) {
-                    const navTo = this.backStack.pop();
-                    console.log('going back to', navTo);
-                    this.activeRing = navTo;
-                    console.log('active ring', this.activeRing);
+                    this.activeRing = this.backStack.pop();
                 }
             });
     }

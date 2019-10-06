@@ -1,10 +1,34 @@
-import { app, BrowserWindow, globalShortcut, screen } from 'electron';
+import {
+    app,
+    AllElectron,
+    BrowserWindow,
+    globalShortcut,
+    ipcMain,
+    screen,
+    Tray,
+    EventEmitter
+} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
-let win: BrowserWindow, serve: boolean;
+let win: BrowserWindow;
+let tray: Tray;
 const args = process.argv.slice(1);
-serve = args.some(val => val === '--serve');
+const serve = args.some(val => val === '--serve');
+
+ipcMain.on('trayCreated', (eventEmitter: EventEmitter, trayCreated: Tray) => {
+    tray = trayCreated;
+});
+
+ipcMain.on('trayExists', () => {
+    win.webContents.send('tray', tray);
+});
+
+ipcMain.on('trayDestroy', () => {
+    if (tray && !tray.isDestroyed()) {
+        tray.destroy();
+    }
+});
 
 function createWindow() {
     const electronScreen = screen;
@@ -21,6 +45,7 @@ function createWindow() {
             nodeIntegration: true,
         },
     });
+    win.maximize();
 
     if (serve) {
         require('electron-reload')(__dirname, {
@@ -46,7 +71,6 @@ function createWindow() {
         // when you should delete the corresponding element.
         win = null;
     });
-
 }
 
 function onHotkey() {
@@ -93,7 +117,6 @@ try {
 
     app.on('will-quit', () => {
         globalShortcut.unregisterAll();
-        console.log('unregister');
     });
 
 } catch (e) {

@@ -1,0 +1,14 @@
+<div class="preferences-component">
+    <h1>Preferences</h1>
+    <form>
+        <mat-form-field>
+            <mat-label>Choose a ring to edit...</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let ring of rings$ | async" [value]="ring.id">
+                    {{ring.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button type="button" mat-raised-button color="primary" (click)="newRingClick()">NEW RING</button>
+    </form>
+</div>

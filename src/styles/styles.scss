@@ -1,6 +1,7 @@
 @import 'variables';
+@import 'rad-theme';
 
-html, body {
+html, body, section.mat-typography {
     font-family: $font-stack;
     margin: 0;
     padding: 0;
@@ -10,3 +11,6 @@ html, body {
 li {
     list-style-type: none;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

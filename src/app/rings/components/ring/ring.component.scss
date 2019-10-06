@@ -25,14 +25,14 @@
     width: 10vw;
 }
 
-.ring.items {
+.ring-items {
+    li {
+        transition: all 1.1s ease-in-out;
+    }
+
     @for $i from 1 through 8 {
         &.items-#{$i} {
             @include on-circle($item-count: $i, $circle-size: 20em, $item-size: 6em);
         }
     }
-}
-
-li {
-    transition: all 1.1s ease-in-out;
 }

@@ -1,7 +1,12 @@
 {
-  "PAGES": {
-      "HOME": {
-          "TITLE": "App works !"
-      }
-  }
+    "MENUS": {
+        "TRAY": {
+            "PREFERENCES": "Preferences"
+        }
+    },
+    "PAGES": {
+        "HOME": {
+            "TITLE": "App works !"
+        }
+    }
 }
