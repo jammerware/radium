@@ -11,7 +11,7 @@ import { PreferencesRoutes } from './preferences/preferences.routes';
         RouterModule.forRoot([
             { path: '', children: HomeRoutes },
             { path: 'preferences', children: PreferencesRoutes }
-        ], { useHash: true })
+        ], { useHash: true, relativeLinkResolution: 'legacy' })
     ],
     exports: [RouterModule]
 })

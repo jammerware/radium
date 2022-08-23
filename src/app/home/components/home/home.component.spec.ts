@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { WelcomeComponent } from './home.component';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -6,7 +6,7 @@ describe('WelcomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
       imports: [TranslateModule.forRoot()]
@@ -23,7 +23,7 @@ describe('WelcomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a h1 tag', waitForAsync(() => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain(
       'PAGES.HOME.TITLE'
