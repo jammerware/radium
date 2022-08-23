@@ -21,9 +21,9 @@ import { NewRingItemComponent } from './components/new-ring-item/new-ring-item.c
         MaterialModule,
         RingsModule,
     ],
-    entryComponents: [
-        NewRingDialogComponent,
-        NewRingItemComponent,
-    ],
+    // entryComponents: [
+    //     NewRingDialogComponent,
+    //     NewRingItemComponent,
+    // ],
 })
 export class PreferencesModule { }

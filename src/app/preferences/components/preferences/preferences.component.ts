@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RingsService } from '@/rings/services/rings.service';
 import { Ring } from '@/rings/models/ring';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NewRingDialogComponent } from '../new-ring-dialog/new-ring-dialog.component';
 import { NewRingItemComponent } from '../new-ring-item/new-ring-item.component';
 
